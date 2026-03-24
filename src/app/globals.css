@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F5F0E8;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dark body {
+  background-color: #0D0D0D;
+}
+
+/* ─── Neo-Brutalism Utilities ───────────────────────────────────────────────── */
+
+@layer utilities {
+  .neo-border {
+    border: 2px solid #0D0D0D;
+  }
+  .neo-border-3 {
+    border: 3px solid #0D0D0D;
+  }
+  .dark .neo-border,
+  .dark .neo-border-3 {
+    border-color: #FFFFFF;
+  }
+}
+
+/* ─── Prose (markdown rendered content) ────────────────────────────────────── */
+
+.prose h1 { @apply text-2xl font-black mt-6 mb-3 text-neo-black dark:text-white; }
+.prose h2 { @apply text-xl font-black mt-6 mb-3 text-neo-black dark:text-white border-b-2 border-neo-black dark:border-white pb-1; }
+.prose h3 { @apply text-lg font-bold mt-4 mb-2 text-neo-black dark:text-white; }
+.prose p  { @apply mb-4 text-[#333] dark:text-[#CCC] leading-relaxed; }
+.prose ul { @apply list-disc pl-5 mb-4 space-y-1 text-[#333] dark:text-[#CCC]; }
+.prose ol { @apply list-decimal pl-5 mb-4 space-y-1 text-[#333] dark:text-[#CCC]; }
+.prose strong { @apply font-bold text-neo-black dark:text-white; }
+.prose code {
+  @apply bg-neo-yellow text-neo-black px-1.5 py-0.5 rounded font-mono text-sm border border-neo-black dark:border-neo-black;
+}
+.prose pre {
+  @apply bg-neo-black text-neo-yellow p-4 rounded-none border-2 border-neo-black overflow-x-auto mb-4;
+  box-shadow: 4px 4px 0px #0D0D0D;
+}
+.prose pre code { @apply bg-transparent border-none p-0 text-neo-yellow; }
+.prose blockquote {
+  @apply border-l-4 border-neo-black dark:border-white pl-4 italic text-[#555] dark:text-[#AAA] bg-neo-yellow/20 py-2 my-4;
+}
+.prose a { @apply underline font-semibold text-neo-black dark:text-neo-yellow; }
