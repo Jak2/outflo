@@ -65,6 +65,8 @@ outflo/
 
 ## Adding Content
 
+The platform dynamically reads the `.md` files in the `/content` folders. Adding a new file automatically creates a new card on the UI, adds any new tags to the category filters, and generates a dedicated page.
+
 ### New Prompt
 
 Create a new Markdown file at `/content/prompts/my-prompt.md`:

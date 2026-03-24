@@ -31,11 +31,11 @@ export default async function PromptPage({ params }: Props) {
   if (!prompt) notFound();
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div className="max-w-3xl mx-auto py-12">
       {/* Back */}
       <Link
         href="/"
-        className="inline-flex items-center gap-2 text-sm font-bold border-2 border-neo-black dark:border-white bg-white dark:bg-[#1A1A1A] px-3 py-1.5 shadow-neo dark:shadow-neo-white hover:bg-neo-yellow hover:text-neo-black hover:shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all mb-10"
+        className="inline-flex items-center gap-2 text-[0.875em] font-bold border-2 border-neo-black dark:border-white bg-white dark:bg-[#1A1A1A] px-4 py-2 rounded-xl shadow-neo dark:shadow-neo-white hover:bg-neo-yellow hover:text-neo-black hover:shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all mb-10"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -51,31 +51,31 @@ export default async function PromptPage({ params }: Props) {
       </div>
 
       {/* Title */}
-      <h1 className="text-4xl font-black text-neo-black dark:text-white mb-3 leading-tight">
+      <h1 className="text-[2.25em] font-black text-neo-black dark:text-white mb-3 leading-tight">
         {prompt.title}
       </h1>
 
       {prompt.description && (
-        <p className="text-lg font-medium text-[#555] dark:text-[#AAA] mb-8">
+        <p className="text-[0.875em] font-medium text-[#666] dark:text-[#999] mb-8 leading-relaxed">
           {prompt.description}
         </p>
       )}
 
       {/* Image */}
       {prompt.image && (
-        <div className="relative w-full aspect-video border-2 border-neo-black dark:border-white shadow-neo dark:shadow-neo-white mb-8 overflow-hidden">
+        <div className="relative w-full aspect-video border-2 border-neo-black dark:border-white rounded-2xl shadow-neo dark:shadow-neo-white mb-8 overflow-hidden">
           <Image src={prompt.image} alt={prompt.title} fill className="object-cover" />
         </div>
       )}
 
-      {/* Copy button */}
+      {/* Copy */}
       <div className="flex justify-end mb-4">
         <CopyButton text={prompt.rawContent} label="Copy Prompt" />
       </div>
 
       {/* Content */}
       <article
-        className="prose bg-white dark:bg-[#1A1A1A] border-2 border-neo-black dark:border-white shadow-neo dark:shadow-neo-white p-6"
+        className="prose bg-white dark:bg-[#1A1A1A] border-2 border-neo-black dark:border-white rounded-2xl shadow-neo dark:shadow-neo-white p-6"
         dangerouslySetInnerHTML={{ __html: prompt.content }}
       />
     </div>

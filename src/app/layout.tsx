@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${inter.className} bg-cream dark:bg-neo-black text-neo-black dark:text-white min-h-screen flex flex-col`}
       >
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 px-[8em]">{children}</main>
         <Footer />
       </body>
     </html>

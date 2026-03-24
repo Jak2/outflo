@@ -30,7 +30,6 @@ export default async function WorkflowPage({ params }: Props) {
   const workflow = await getWorkflowBySlug(params.slug);
   if (!workflow) notFound();
 
-  // Build copy-all text from steps (or fall back to raw content)
   const allStepsText =
     workflow.steps.length > 0
       ? workflow.steps
@@ -39,11 +38,11 @@ export default async function WorkflowPage({ params }: Props) {
       : workflow.rawContent;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
+    <div className="max-w-3xl mx-auto py-12">
       {/* Back */}
       <Link
         href="/workflows"
-        className="inline-flex items-center gap-2 text-sm font-bold border-2 border-neo-black dark:border-white bg-white dark:bg-[#1A1A1A] px-3 py-1.5 shadow-neo dark:shadow-neo-white hover:bg-neo-yellow hover:text-neo-black hover:shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all mb-10"
+        className="inline-flex items-center gap-2 text-[0.875em] font-bold border-2 border-neo-black dark:border-white bg-white dark:bg-[#1A1A1A] px-4 py-2 rounded-xl shadow-neo dark:shadow-neo-white hover:bg-neo-yellow hover:text-neo-black hover:shadow-neo-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all mb-10"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -59,30 +58,29 @@ export default async function WorkflowPage({ params }: Props) {
       </div>
 
       {/* Title */}
-      <h1 className="text-4xl font-black text-neo-black dark:text-white mb-3 leading-tight">
+      <h1 className="text-[2.25em] font-black text-neo-black dark:text-white mb-3 leading-tight">
         {workflow.title}
       </h1>
 
       {workflow.description && (
-        <p className="text-lg font-medium text-[#555] dark:text-[#AAA] mb-8">
+        <p className="text-[0.875em] font-medium text-[#666] dark:text-[#999] mb-8 leading-relaxed">
           {workflow.description}
         </p>
       )}
 
       {/* Step count + Copy All */}
-      <div className="flex items-center justify-between mb-6 p-4 border-2 border-neo-black dark:border-white bg-neo-yellow shadow-neo dark:shadow-neo-white">
-        <span className="text-sm font-black text-neo-black">
+      <div className="flex items-center justify-between mb-6 p-4 border-2 border-neo-black dark:border-white bg-neo-yellow rounded-2xl shadow-neo dark:shadow-neo-white">
+        <span className="text-[0.875em] font-black text-neo-black">
           {workflow.steps.length} step{workflow.steps.length !== 1 ? "s" : ""} in this workflow
         </span>
         <CopyButton text={allStepsText} label="Copy All Steps" />
       </div>
 
-      {/* Steps or fallback full content */}
       {workflow.steps.length > 0 ? (
         <WorkflowSteps steps={workflow.steps} />
       ) : (
         <article
-          className="prose bg-white dark:bg-[#1A1A1A] border-2 border-neo-black dark:border-white shadow-neo dark:shadow-neo-white p-6"
+          className="prose bg-white dark:bg-[#1A1A1A] border-2 border-neo-black dark:border-white rounded-2xl shadow-neo dark:shadow-neo-white p-6"
           dangerouslySetInnerHTML={{ __html: workflow.content }}
         />
       )}

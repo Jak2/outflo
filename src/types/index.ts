@@ -5,6 +5,7 @@ export interface PromptMeta {
   tags: string[];
   slug: string;
   created_at?: string;
+  rawContent: string; // included so cards can render prompt inline
 }
 
 export interface Prompt extends PromptMeta {

@@ -18,7 +18,7 @@ export function getAllPrompts(): PromptMeta[] {
     .map((filename) => {
       const slug = filename.replace(/\.md$/, "");
       const raw = fs.readFileSync(path.join(PROMPTS_DIR, filename), "utf-8");
-      const { data } = matter(raw);
+      const { data, content } = matter(raw);
       return {
         slug,
         title: data.title ?? slug,
@@ -26,6 +26,7 @@ export function getAllPrompts(): PromptMeta[] {
         image: data.image ?? "",
         tags: Array.isArray(data.tags) ? data.tags : [],
         created_at: data.created_at ?? "",
+        rawContent: content.trim(),
       } as PromptMeta;
     })
     .sort((a, b) =>
