@@ -12,8 +12,6 @@ export default function WorkflowCard({ workflow }: WorkflowCardProps) {
       href={`/workflows/${workflow.slug}`}
       className="group block bg-white dark:bg-[#1A1A1A] border-2 border-neo-black dark:border-white rounded-2xl shadow-neo dark:shadow-neo-white hover:shadow-neo-lg dark:hover:shadow-neo-white-lg hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
     >
-      {/* Top accent */}
-      <div className="h-1.5 w-full bg-neo-black dark:bg-neo-yellow rounded-t-2xl" />
 
       <div className="p-5">
         <div className="flex items-start justify-between gap-3 mb-2">

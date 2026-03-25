@@ -30,6 +30,22 @@ export default async function WorkflowPage({ params }: Props) {
   const workflow = await getWorkflowBySlug(params.slug);
   if (!workflow) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: workflow.title,
+    description: workflow.description,
+    keywords: workflow.tags.join(", "),
+    datePublished: workflow.created_at || undefined,
+    author: { "@type": "Organization", name: "Outflo" },
+    step: workflow.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.title,
+      text: s.content,
+    })),
+  };
+
   const allStepsText =
     workflow.steps.length > 0
       ? workflow.steps
@@ -39,6 +55,7 @@ export default async function WorkflowPage({ params }: Props) {
 
   return (
     <div className="max-w-3xl mx-auto py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Back */}
       <Link
         href="/workflows"

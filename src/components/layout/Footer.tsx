@@ -1,6 +1,6 @@
-export default function Footer() {
+export default function Footer({ className }: { className?: string }) {
   return (
-    <footer className="mt-20 border-t-2 border-neo-black dark:border-white bg-cream dark:bg-neo-black">
+    <footer className={`mt-20 border-t-2 border-neo-black dark:border-white bg-cream dark:bg-neo-black ${className ?? ""}`}>
       <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-[0.875em] font-black text-neo-black dark:text-white">
           © {new Date().getFullYear()}{" "}

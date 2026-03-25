@@ -30,8 +30,19 @@ export default async function PromptPage({ params }: Props) {
   const prompt = await getPromptBySlug(params.slug);
   if (!prompt) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: prompt.title,
+    description: prompt.description,
+    keywords: prompt.tags.join(", "),
+    datePublished: prompt.created_at || undefined,
+    author: { "@type": "Organization", name: "Outflo" },
+  };
+
   return (
     <div className="max-w-3xl mx-auto py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {/* Back */}
       <Link
         href="/"
