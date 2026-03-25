@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ toggleSize = "7px" }: { toggleSize?: string }) {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function ThemeToggle() {
     /* --toggle-size scales the entire component; 20px fits the navbar */
     <label
       className="theme-switch"
-      style={{ "--toggle-size": "7px" } as React.CSSProperties}
+      style={{ "--toggle-size": toggleSize } as React.CSSProperties}
     >
       <input
         type="checkbox"

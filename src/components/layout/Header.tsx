@@ -59,11 +59,11 @@ export default function Header() {
         <div className="flex items-center justify-between px-[6%] py-2">
           <Link
             href="/"
-            className="text-[1.125em] font-black text-neo-black dark:text-white"
+            className="text-[1.5em] font-black text-neo-black dark:text-white"
           >
             Out<span className="bg-neo-yellow px-0.5 rounded-sm">flo</span>
           </Link>
-          <ThemeToggle />
+          <ThemeToggle toggleSize="10px" />
         </div>
       </div>
     </header>
